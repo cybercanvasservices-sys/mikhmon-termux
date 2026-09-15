@@ -42,4 +42,34 @@ $cekindo['indo'] = array(
     'RP', 'Rp', 'rp', 'IDR', 'idr', 'RP.', 'Rp.', 'rp.', 'IDR.', 'idr.',
 );
 
+// Match Mikhmon sales records written by RouterOS 6 (mmm/dd/yyyy)
+// and RouterOS 7.10+ (yyyy-mm-dd).
+function mikhmon_script_matches_period($row, $idhr = '', $idbl = '') {
+    if ($idhr == '' && $idbl == '') {
+        return true;
+    }
+    $recordDate = isset($row['source']) ? trim($row['source']) : '';
+    if ($recordDate == '' && isset($row['name'])) {
+        $recordDate = explode('-|-', $row['name'])[0];
+    }
+    $recordDate = strtolower($recordDate);
+    if ($idhr != '') {
+        $targetLegacy = strtolower($idhr);
+        $targetIso = date('Y-m-d', strtotime(str_replace('/', ' ', $idhr)));
+        return $recordDate == $targetLegacy || $recordDate == $targetIso;
+    }
+    $targetMonth = strtolower($idbl);
+    $targetIsoMonth = date('Y-m', strtotime('01 ' . substr($idbl, 0, 3) . ' ' . substr($idbl, 3, 4)));
+    return $recordDate == $targetMonth || substr($recordDate, 0, 7) == $targetIsoMonth;
+}
+
+function mikhmon_filter_scripts($rows, $idhr = '', $idbl = '') {
+    $filtered = array();
+    foreach ((array)$rows as $row) {
+        if (mikhmon_script_matches_period($row, $idhr, $idbl)) {
+            $filtered[] = $row;
+        }
+    }
+    return $filtered;
+}
 

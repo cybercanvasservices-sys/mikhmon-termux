@@ -106,9 +106,7 @@ if (!isset($_SESSION["mikhmon"])) {
 	}
 	if (strlen($idhr) > "0") {
 		if ($API->connect($iphost, $userhost, decrypt($passwdhost))) {
-			$getData = $API->comm("/system/script/print", array(
-				"?source" => "$idhr",
-			));
+			$getData = mikhmon_filter_scripts($API->comm("/system/script/print", array("?comment" => "mikhmon")), $idhr, '');
 			$TotalReg = count($getData);
 		}
 		$filedownload = $idhr;
@@ -116,9 +114,7 @@ if (!isset($_SESSION["mikhmon"])) {
 		$shd = "inline-block";
 	} elseif (strlen($idbl) > "0") {
 		if ($API->connect($iphost, $userhost, decrypt($passwdhost))) {
-			$getData = $API->comm("/system/script/print", array(
-				"?owner" => "$idbl",
-			));
+			$getData = mikhmon_filter_scripts($API->comm("/system/script/print", array("?comment" => "mikhmon")), '', $idbl);
 			$TotalReg = count($getData);
 		}
 		$filedownload = $idbl;
@@ -136,9 +132,7 @@ if (!isset($_SESSION["mikhmon"])) {
 		$shd = "none";
 	} elseif (strlen($idbl) > "0" ) {
 		if ($API->connect($iphost, $userhost, decrypt($passwdhost))) {
-			$getData = $API->comm("/system/script/print", array(
-				"?owner" => "$idbl",
-			));
+			$getData = mikhmon_filter_scripts($API->comm("/system/script/print", array("?comment" => "mikhmon")), '', $idbl);
 			$TotalReg = count($getData);
 		}
 		$filedownload = $idbl;

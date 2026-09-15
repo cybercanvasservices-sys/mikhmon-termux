@@ -69,9 +69,9 @@ include('../lang/'.$langid.'.php');
     ));
     $TotalRHr = count($getSRHr);
     $_SESSION[$session.'totalHr'] = $TotalRHr;*/
-    $getSRBl = $API->comm("/system/script/print", array(
-      "?owner" => "$idbl",
-    ));
+    $getSRBl = mikhmon_filter_scripts($API->comm("/system/script/print", array(
+      "?comment" => "mikhmon",
+    )), '', $idbl);
     $TotalRBl = count($getSRBl);
     $_SESSION[$session.'totalBl'] = $TotalRBl;
 /*
@@ -82,7 +82,7 @@ include('../lang/'.$langid.'.php');
     }*/
     foreach($getSRBl as $row){
     
-      if((explode("-|-", $row['name'])[0]) == $idhr){
+      if(mikhmon_script_matches_period($row, $idhr, '')){
          $tHr += explode("-|-", $row['name'])[3];
          $TotalRHr += count((array)$row['source']); /*Modif line add (array) by github https://github.com/MasKawer*/
  
