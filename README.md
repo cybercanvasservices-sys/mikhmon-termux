@@ -24,4 +24,17 @@ Puis ouvrez `http://127.0.0.1:8080` dans le navigateur du téléphone.
 Après l’installation, le serveur démarre automatiquement à chaque ouverture de Termux
 et l’adresse locale s’ouvre dans le navigateur Android.
 
+## Installation Windows avec PowerShell
+
+Dans PowerShell, après avoir installé Git, exécutez :
+
+```powershell
+Set-ExecutionPolicy -Scope Process Bypass
+irm https://raw.githubusercontent.com/cybercanvasservices-sys/mikhmon-termux/main/install-windows.ps1 -OutFile "$env:TEMP\install-mikhmon.ps1"
+powershell -ExecutionPolicy Bypass -File "$env:TEMP\install-mikhmon.ps1"
+```
+
+L’installateur crée `C:\Users\VotreNom\Mikhmon\mikhmon-termux`, ajoute un raccourci
+`Mikhmon` sur le Bureau et démarre le serveur local sur le port 8080.
+
 Le fichier de configuration contenant les routeurs et mots de passe n'est pas inclus dans ce dépôt. Une configuration vierge est créée automatiquement à partir de `include/config.example.php`.
