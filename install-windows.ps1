@@ -4,6 +4,7 @@ $BaseDir = Join-Path $env:USERPROFILE 'Mikhmon'
 $AppDir = Join-Path $BaseDir 'mikhmon-termux'
 $Desktop = [Environment]::GetFolderPath('Desktop')
 $ShortcutPath = Join-Path $Desktop 'CYBERCANVAS SERVICE.lnk'
+$OldShortcutPath = Join-Path $Desktop 'Mikhmon.lnk'
 
 New-Item -ItemType Directory -Force -Path $BaseDir | Out-Null
 if (Test-Path (Join-Path $AppDir '.git')) {
@@ -45,6 +46,7 @@ $Shortcut.WorkingDirectory = $AppDir
 $Shortcut.IconLocation = "$IconPath,0"
 $Shortcut.Description = 'CYBERCANVAS SERVICE MIKHMON'
 $Shortcut.Save()
+if (Test-Path $OldShortcutPath) { Remove-Item -LiteralPath $OldShortcutPath -Force }
 
 Write-Host "Raccourci créé : $ShortcutPath" -ForegroundColor Green
 & $StartScript
