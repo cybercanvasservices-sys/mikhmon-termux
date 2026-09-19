@@ -213,6 +213,7 @@ if($idleto != "disable"){
   <div class="menu text-center align-middle card-header" style="border-radius:0;"><h3 id="MikhmonSession"><?= $session; ?></h3></div>
   <a class="connect menu <?= $shome; ?>" id="<?= $session; ?>&c=settings"><i class='fa fa-tachometer'></i> <?= $_dashboard ?></a>
   <a  href="./admin.php?id=settings&session=<?= $session; ?>" class="menu <?= $ssettings; ?>" title="Mikhmon Settings"><i class='fa fa-gear'></i> <?= $_session_settings ?></a>
+  <a href="./admin.php?id=wireguard&session=<?= $session; ?>" class="menu"><i class="fa fa-shield"></i> WireGuard distant</a>
   <a href="./admin.php?id=uplogo&session=<?= $session; ?>" class="menu <?= $suplogo; ?>"><i class="fa fa-upload "></i> <?= $_upload_logo ?></a>
   <a href="./admin.php?id=editor&template=default&session=<?= $session; ?>" class="menu <?= $seditor; ?>"><i class="fa fa-edit"></i> <?= $_template_editor ?></a>
   <div class="menu spa"></div>
@@ -323,7 +324,18 @@ include('./info.php');
   <a href="./?hotspot=quick-print&session=<?= $session; ?>" class="menu <?= $squick; ?>"> <i class="fa fa-print"></i> <?= $_quick_print ?> </a>
   <!--vouchers-->
   <a href="./?hotspot=users-by-profile&session=<?= $session; ?>" class="menu <?= $susersbp; ?>"> <i class="fa fa-ticket"></i> <?= $_vouchers ?> </a>
-   <!--log-->
+  <!-- PPPoE -->
+  <div class="dropdown-btn <?= $mppp; ?>"><i class="fa fa-exchange"></i> PPPoE
+    <i class="fa fa-caret-down"></i>
+  </div>
+  <div class="dropdown-container <?= $pppmenu; ?>">
+    <a href="./?ppp=secrets&session=<?= $session; ?>" class="<?= $ssecrets; ?>"> <i class="fa fa-users"></i> Comptes PPPoE </a>
+    <a href="./?ppp=addsecret&session=<?= $session; ?>" class="<?= $ssecrets; ?>"> <i class="fa fa-user-plus"></i> Ajouter un compte </a>
+    <a href="./?ppp=profiles&session=<?= $session; ?>" class="<?= $spprofile; ?>"> <i class="fa fa-list"></i> Profils PPP </a>
+    <a href="./?ppp=add-profile&session=<?= $session; ?>" class="<?= $spprofile; ?>"> <i class="fa fa-plus"></i> Ajouter un profil </a>
+    <a href="./?ppp=active&session=<?= $session; ?>" class="<?= $spactive; ?>"> <i class="fa fa-wifi"></i> Connexions actives </a>
+  </div>
+  <!--log-->
   <div class="dropdown-btn <?= $log; ?>"><i class=" fa fa-align-justify"></i> <?= $_log ?>
     <i class="fa fa-caret-down"></i>
   </div>
@@ -386,4 +398,3 @@ echo '<div class="main-container">';
   echo '<div class="main-container" style="display:none">';
 }
 ?>
-

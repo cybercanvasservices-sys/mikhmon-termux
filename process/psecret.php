@@ -1,0 +1,1 @@
+<?php error_reporting(0);$id=$removesecr!=''?$removesecr:($enablesecr!=''?$enablesecr:$disablesecr);if($id!=''){if($removesecr!='')$API->comm('/ppp/secret/remove',array('.id'=>$id));else $API->comm('/ppp/secret/set',array('.id'=>$id,'disabled'=>$enablesecr!=''?'no':'yes'));}echo "<script>window.location='./?ppp=secrets&session=".$session."'</script>";

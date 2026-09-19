@@ -133,7 +133,7 @@ if (!isset($_SESSION["mikhmon"])) {
         	     <div class="card-body">
 				<table class="table table-sm">
 					<tr>
-	  					<td class="align-middle">IP MikroTik </td><td><input class="form-control" type="text" size="15" name="ipmik" title="IP MikroTik / IP Cloud MikroTik" value="<?= $iphost; ?>" required="1"/></td>
+						<td class="align-middle">IP MikroTik / WireGuard </td><td><input class="form-control" type="text" size="15" name="ipmik" title="IP locale, IP Cloud ou IP WireGuard du MikroTik" value="<?= $iphost; ?>" required="1"/><small class="text-muted">Accès distant : utilisez l’adresse WireGuard du MikroTik, par exemple 10.10.10.1.</small></td>
 					</tr>
 					<tr>
 						<td class="align-middle">Username  </td><td><input class="form-control" id="usermk" type="text" size="10" name="usermik" title="User MikroTik" value="<?= $userhost; ?>" required="1"/></td>
@@ -255,7 +255,6 @@ var _0x1d39=["\x68\x6F\x73\x74\x6E\x61\x6D\x65","\x6C\x6F\x63\x61\x74\x69\x6F\x6
 
 
 </script>
-
 
 
 

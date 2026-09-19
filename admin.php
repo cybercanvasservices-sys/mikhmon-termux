@@ -35,6 +35,7 @@ $ids = array(
   "editor",
   "uplogo",
   "settings",
+  "wireguard",
 );
 
 // lang
@@ -135,6 +136,9 @@ if ($id == "login" || substr($url, -1) == "p") {
       echo "<script>window.location='./admin.php?id=sessions'</script>";
     }
   }
+} elseif ($id == "wireguard" && !empty($session)) {
+  include_once('./include/menu.php');
+  include_once('./settings/wireguard.php');
 } elseif ($id == "uplogo"  && !empty($session)) {
   include_once('./include/menu.php');
   include_once('./settings/uplogo.php');
@@ -182,4 +186,3 @@ if ($id == "login" || substr($url, -1) == "p") {
 <?php include('./include/info.php'); ?>
 </body>
 </html>
-

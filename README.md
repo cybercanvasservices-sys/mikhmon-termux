@@ -2,6 +2,13 @@
 
 Version compatible avec RouterOS 6 et RouterOS 7.
 
+Fonctions ajoutées : gestion des comptes/profils PPPoE, connexions PPPoE actives,
+connexion distante via une adresse WireGuard et import local d’un fichier WireGuard `.conf`.
+
+Le tunnel WireGuard doit être activé séparément dans l’application WireGuard Android
+ou dans Termux. Le fichier `.conf` contient une clé privée : il ne faut jamais le publier
+sur GitHub.
+
 ## Installation Termux
 
 ```bash
