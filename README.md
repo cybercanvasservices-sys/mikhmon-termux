@@ -35,6 +35,6 @@ powershell -ExecutionPolicy Bypass -File "$env:TEMP\install-mikhmon.ps1"
 ```
 
 L’installateur crée `C:\Users\VotreNom\Mikhmon\mikhmon-termux`, ajoute un raccourci
-`Mikhmon` sur le Bureau et démarre le serveur local sur le port 8080.
+`CYBERCANVAS SERVICE` avec l’icône Mikhmon sur le Bureau et démarre le serveur local sur le port 8080.
 
 Le fichier de configuration contenant les routeurs et mots de passe n'est pas inclus dans ce dépôt. Une configuration vierge est créée automatiquement à partir de `include/config.example.php`.
